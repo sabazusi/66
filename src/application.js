@@ -22,6 +22,9 @@ export default class Application
 
 	authentication()
 	{
-		new Authenticater();
+		new Authenticater(
+			"UOJquAqK3rJJXV60fui0vxN0r",
+			"T9n25FPMKx1Z7IXsV0z6Wdp4ulZTHvPgqKi2fc7dFaVQc6V126"
+		);
 	}
 }

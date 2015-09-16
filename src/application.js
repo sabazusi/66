@@ -25,6 +25,14 @@ export default class Application
 		new Authenticater(
 			"VH7q2bCsqvp3Jf66JofLFR2wn",
 			"w4zkY8kukBNAHEOuxqDAaXdXFXmfEDiqIg5N4ZE9PYDhl664yL"
+		).on(
+			'authentication-complete',
+			this.onAuthenticationCompleteHadnler.bind(this)
 		);
+	}
+
+	onAuthenticationCompleteHadnler({accessToken, accessTokenSecret}) {
+		console.log("accessToken: " + accessToken);
+		console.log("accessTokenSecret: " + accessTokenSecret);
 	}
 }

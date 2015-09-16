@@ -36,11 +36,19 @@ export default class Authenticater extends EventEmitter
 	{
 		this.window.webContents.on('will-navigate', (event, url) => {
 			var params = Query.parse(UrlParse(url).query);
-			if (params.oauth_token && params.oauth_verifier)
+			if (params.oauth_verifier)
 			{
-				console.log("authentication complete");
-				console.log(params.oauth_token);
-				console.log(params.oauth_verifier);
+				twitter.getAccessToken(requestToken, requestTokenSecret, params.oauth_verifier, 
+					(error, accessToken, accessTokenSecret) => {
+						this.emit(
+							'authentication-complete',
+							{
+								accessToken: params.oauth_token,
+								accessTokenSecret: params.oauth_verifier
+							}
+						);
+					}
+				);
 			}
 		});
 		this.window.loadUrl(url);

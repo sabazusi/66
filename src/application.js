@@ -1,5 +1,6 @@
 import app from 'app'
 import Authenticater from './authenticater'
+import BrowserWindow from 'browser-window'
 
 export default class Application
 {
@@ -32,7 +33,11 @@ export default class Application
 	}
 
 	onAuthenticationCompleteHadnler({accessToken, accessTokenSecret}) {
-		console.log("accessToken: " + accessToken);
-		console.log("accessTokenSecret: " + accessTokenSecret);
+		this.window = new BrowserWindow({
+			width: 640,
+			height: 480,
+			'node-integration' : false
+		});
+		this.window.loadUrl(`file://${__dirname}/view/main.html`);
 	}
 }

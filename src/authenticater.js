@@ -47,6 +47,10 @@ export default class Authenticater extends EventEmitter
 								accessTokenSecret: params.oauth_verifier
 							}
 						);
+						event.preventDefault();
+						setImmediate(() => {
+							this.window.close();
+						})
 					}
 				);
 			}

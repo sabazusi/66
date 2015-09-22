@@ -40,6 +40,11 @@ export default class Authenticater extends EventEmitter
 			{
 				twitter.getAccessToken(requestToken, requestTokenSecret, params.oauth_verifier, 
 					(error, accessToken, accessTokenSecret) => {
+						event.preventDefault();
+						setImmediate(() => {
+							this.window.close();
+						});
+
 						this.emit(
 							'authentication-complete',
 							{
@@ -47,10 +52,6 @@ export default class Authenticater extends EventEmitter
 								accessTokenSecret: params.oauth_verifier
 							}
 						);
-						event.preventDefault();
-						setImmediate(() => {
-							this.window.close();
-						})
 					}
 				);
 			}

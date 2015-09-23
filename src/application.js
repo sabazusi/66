@@ -33,10 +33,11 @@ export default class Application
 	}
 
 	onAuthenticationCompleteHadnler({accessToken, accessTokenSecret}) {
+		this.accessToken = accessToken;
+		this.accessTokenSecret = accessTokenSecret;
 		this.mainWindow = new BrowserWindow({
 			width: 800,
-			height: 600,
-			'node-integration' : false
+			height: 600
 		});
 		this.mainWindow.loadUrl(`file://${__dirname}/view/main.html`);
 	}

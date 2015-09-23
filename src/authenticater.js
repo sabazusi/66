@@ -14,6 +14,7 @@ export default class Authenticater extends EventEmitter
 			consumerKey: cKey,
 			consumerSecret: cSecret
 		});
+		this.twitter = twitter;
 
 		twitter.getRequestToken(
 			(error, requestToken, requestTokenSecret, result) => {
